@@ -77,6 +77,14 @@ export class LoginPage {
 	}
 
 	/**
+	 * Navigates to the /log-in/{locale} endpoint.
+	 */
+	async visitLocale( locale = '' ): Promise< void > {
+		const targetUrl = locale ? `log-in/${ locale }` : 'log-in';
+		await this.page.goto( getCalypsoURL( targetUrl ), { waitUntil: 'networkidle' } );
+	}
+
+	/**
 	 * Switch account if an user is already logged in.
 	 */
 	private async revealLoginForm(): Promise< void > {
