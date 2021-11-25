@@ -72,23 +72,8 @@ export class LoginPage {
 	/**
 	 * Navigates to the /log-in endpoint.
 	 */
-	async visit(): Promise< void > {
-		await this.page.goto( getCalypsoURL( 'log-in' ), { waitUntil: 'networkidle' } );
-	}
-
-	/**
-	 * Navigates to the /log-in/{locale} endpoint.
-	 */
-	async visitBlueLogin( locale = '' ): Promise< void > {
-		const targetUrl = locale ? `log-in/${ locale }` : 'log-in';
-		await this.page.goto( getCalypsoURL( targetUrl ), { waitUntil: 'networkidle' } );
-	}
-
-	/**
-	 * Navigates to the /log-in/{locale} endpoint.
-	 */
-	async visitWhiteLogin( locale = '' ): Promise< void > {
-		const targetUrl = locale ? `log-in/new/${ locale }` : 'log-in/new';
+	async visit( path = '' ): Promise< void > {
+		const targetUrl = path ? `log-in/${ path }` : 'log-in';
 		await this.page.goto( getCalypsoURL( targetUrl ), { waitUntil: 'networkidle' } );
 	}
 
