@@ -25,13 +25,13 @@ function LaunchWpcomWelcomeTour() {
 			select( 'automattic/starter-page-layouts' ).isOpen(),
 		isManuallyOpened: select( 'automattic/wpcom-welcome-guide' ).isWelcomeGuideManuallyOpened(),
 	} ) );
-
+	const isAppBannerVisible = window.calypsoifyGutenberg?.isAppBannerVisible;
 	const localeSlug = useLocale();
 	// Preload first card image (others preloaded after open state confirmed)
 	new window.Image().src = getTourSteps( localeSlug )[ 0 ].meta.imgSrc;
 
 	useEffect( () => {
-		if ( ! show && ! isNewPageLayoutModalOpen ) {
+		if ( ( ! show && ! isNewPageLayoutModalOpen ) || isAppBannerVisible ) {
 			return;
 		}
 
@@ -40,7 +40,11 @@ function LaunchWpcomWelcomeTour() {
 			is_gutenboarding: window.calypsoifyGutenberg?.isGutenboarding,
 			is_manually_opened: isManuallyOpened,
 		} );
-	}, [ isNewPageLayoutModalOpen, isManuallyOpened, show ] );
+
+		return () => {
+			document.body.removeChild( portalParent );
+		};
+	}, [ isNewPageLayoutModalOpen, isManuallyOpened, show, portalParent, isAppBannerVisible ] );
 
 	if ( ! show || isNewPageLayoutModalOpen ) {
 		return null;
