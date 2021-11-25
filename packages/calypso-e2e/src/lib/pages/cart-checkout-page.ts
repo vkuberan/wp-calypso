@@ -80,9 +80,9 @@ export class CartCheckoutPage {
 	}
 
 	/**
-	 * Navigates to checkout page of the specified blog
+	 * Navigates to checkout page of the specified blog.
 	 *
-	 * @param blogName Blog name for which the checkout page is to be loaded.
+	 * @param {string} blogName Blog name for which the checkout page is to be loaded.
 	 */
 	async visit( blogName = '' ): Promise< void > {
 		await this.page.goto( getCalypsoURL( `checkout/${ blogName }` ), { waitUntil: 'networkidle' } );
@@ -126,10 +126,6 @@ export class CartCheckoutPage {
 	async getPaymentButtonText(): Promise< string > {
 		const elementHandle = await this.page.waitForSelector( selectors.paymentButton );
 		return await elementHandle.innerText();
-	}
-
-	async validatePaymentMethod(): Promise< void > {
-		await this.page.waitForSelector( selectors.paymentMethod );
 	}
 
 	/**

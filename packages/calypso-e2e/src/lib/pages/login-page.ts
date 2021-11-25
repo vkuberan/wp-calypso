@@ -71,6 +71,8 @@ export class LoginPage {
 
 	/**
 	 * Navigates to the /log-in endpoint.
+	 *
+	 * @param {string} path The path to be appended to /log-in. E.g. /log-in/new is the reskinned login page.
 	 */
 	async visit( path = '' ): Promise< void > {
 		const targetUrl = path ? `log-in/${ path }` : 'log-in';
