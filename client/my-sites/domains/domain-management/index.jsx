@@ -22,6 +22,7 @@ import Transfer from './transfer';
 import TransferOut from './transfer/transfer-out';
 import TransferPage from './transfer/transfer-page';
 import TransferToOtherSite from './transfer/transfer-to-other-site';
+import TransferDomainToOtherSite from './transfer/transfer-to-other-site/transfer-domain-to-other-site';
 import TransferToOtherUser from './transfer/transfer-to-other-user';
 
 export default {
@@ -48,6 +49,7 @@ export default {
 	TransferOut,
 	TransferPage,
 	TransferToOtherSite,
+	TransferDomainToOtherSite,
 	TransferToOtherUser,
 	Transfer,
 };
