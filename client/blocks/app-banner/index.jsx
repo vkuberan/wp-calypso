@@ -20,7 +20,7 @@ import getCurrentRoute from 'calypso/state/selectors/get-current-route';
 import isAppBannerVisible from 'calypso/state/selectors/is-app-banner-visible';
 import isNotificationsOpen from 'calypso/state/selectors/is-notifications-open';
 import { shouldDisplayTosUpdateBanner } from 'calypso/state/selectors/should-display-tos-update-banner';
-import { getSectionName, appBannerIsEnabled } from 'calypso/state/ui/selectors';
+import { getSectionName } from 'calypso/state/ui/selectors';
 import {
 	EDITOR,
 	GUTENBERG,
@@ -215,7 +215,6 @@ const mapStateToProps = ( state ) => {
 		currentSection: getCurrentSection( sectionName, isNotesOpen ),
 		currentRoute: getCurrentRoute( state ),
 		isTosBannerVisible: shouldDisplayTosUpdateBanner( state ),
-		isAppBannerEnabled: appBannerIsEnabled( state ),
 		isVisible: isAppBannerVisible( state ),
 	};
 };
