@@ -65,7 +65,7 @@ export function MiniCart( {
 	} = useShoppingCart( selectedSiteSlug );
 	const { __ } = useI18n();
 	const isDisabled = isLoading || isPendingUpdate;
-	const isPwpoUser = false; // TODO: deal with this properly
+	const isPwpoUser = false;
 
 	return (
 		<CheckoutProvider paymentMethods={ [] } paymentProcessors={ {} }>
