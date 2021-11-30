@@ -16,6 +16,7 @@ import QuerySupportTypes from 'calypso/blocks/inline-help/inline-help-query-supp
 import { HappychatButton as HappychatButtonUnstyled } from 'calypso/components/happychat/button';
 import useCartKey from 'calypso/my-sites/checkout/use-cart-key';
 import { recordTracksEvent } from 'calypso/state/analytics/actions';
+import getSupportLevel from 'calypso/state/happychat/selectors/get-support-level';
 import isHappychatAvailable from 'calypso/state/happychat/selectors/is-happychat-available';
 import isPresalesChatAvailable from 'calypso/state/happychat/selectors/is-presales-chat-available';
 import { showInlineHelpPopover } from 'calypso/state/inline-help/actions';
@@ -24,7 +25,6 @@ import getSupportVariation, {
 	SUPPORT_FORUM,
 	SUPPORT_DIRECTLY,
 } from 'calypso/state/selectors/get-inline-help-support-variation';
-import getSupportLevel from 'calypso/state/selectors/get-support-level';
 import isSupportVariationDetermined from 'calypso/state/selectors/is-support-variation-determined';
 import type { Theme } from '@automattic/composite-checkout';
 import type { ResponseCartProduct } from '@automattic/shopping-cart';
