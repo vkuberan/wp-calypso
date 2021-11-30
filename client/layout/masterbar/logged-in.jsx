@@ -287,7 +287,7 @@ class MasterbarLoggedIn extends Component {
 						</AsyncLoad>
 					) }
 					<AsyncLoad
-						require="./masterbar-cart-wrapper"
+						require="./masterbar-cart/masterbar-cart-wrapper"
 						placeholder={ null }
 						className="masterbar__item-cart"
 						tooltip={ translate( 'My shopping cart' ) }
