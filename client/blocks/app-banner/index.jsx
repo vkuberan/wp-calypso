@@ -128,10 +128,18 @@ export class AppBanner extends Component {
 		return null;
 	}
 
+	isDraftPostModalShowing() {
+		return window.sessionStorage.getItem( 'wpcom_signup_complete_show_draft_post_modal' );
+	}
+
 	render() {
 		const { translate, currentSection } = this.props;
 
 		if ( ! this.props.isVisible ) {
+			return null;
+		}
+
+		if ( this.isDraftPostModalShowing() ) {
 			return null;
 		}
 
