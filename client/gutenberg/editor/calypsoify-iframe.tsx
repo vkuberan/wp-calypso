@@ -143,6 +143,7 @@ class CalypsoifyIframe extends Component< ComponentProps, State > {
 	mediaCancelPort: MessagePort | null = null;
 	revisionsPort: MessagePort | null = null;
 	checkoutPort: MessagePort | null = null;
+	appBannerPort: MessagePort | null = null;
 
 	componentDidMount() {
 		window.addEventListener( 'message', this.onMessage, false );
@@ -166,6 +167,10 @@ class CalypsoifyIframe extends Component< ComponentProps, State > {
 		// not already triggered in componentDidMount
 		if ( ! this.editorRedirectTimer && ! shouldLoadIframe && this.props.shouldLoadIframe ) {
 			this.setEditorRedirectTimer( 25000 );
+		}
+
+		if ( this.props.appBannerDismissed ) {
+			this.handleAppBannerDismiss();
 		}
 	}
 
@@ -494,10 +499,14 @@ class CalypsoifyIframe extends Component< ComponentProps, State > {
 
 		if ( EditorActions.GetIsAppBannerVisible === action ) {
 			const isAppBannerVisible = this.props.isAppBannerVisible;
-
 			ports[ 0 ].postMessage( {
 				isAppBannerVisible,
 			} );
+
+			// If App Banner is not visible, we won't need to notify the Welcome Tour after its dismission
+			if ( isAppBannerVisible ) {
+				this.appBannerPort = ports[ 0 ];
+			}
 		}
 	};
 
@@ -686,6 +695,17 @@ class CalypsoifyIframe extends Component< ComponentProps, State > {
 		}
 	};
 
+	handleAppBannerDismiss = () => {
+		if ( this.appBannerPort ) {
+			this.appBannerPort.postMessage( {
+				isAppBannerVisible: false,
+			} );
+
+			this.appBannerPort.close();
+			this.appBannerPort = null;
+		}
+	};
+
 	render() {
 		const { iframeUrl, shouldLoadIframe } = this.props;
 		const {
@@ -863,6 +883,7 @@ const mapStateToProps = (
 		site: getSite( state, siteId ),
 		parentPostId,
 		isAppBannerVisible: isAppBannerVisible( state ),
+		appBannerDismissed: state.ui.appBannerDismissed,
 	};
 };
 

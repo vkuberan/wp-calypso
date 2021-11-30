@@ -1082,7 +1082,7 @@ function handleInlineHelpButton( calypsoPort ) {
 }
 
 /**
- * Check if the App Banner is visible and place it on the calypsoifyGutenberg object.
+ * Check if the App Banner is visible set the welcome guide enabled if the app banner is not visible
  *
  * @param {MessagePort} calypsoPort Port used for communication with parent frame.
  */
@@ -1097,7 +1097,7 @@ function getIsAppBannerVisible( calypsoPort ) {
 	);
 	port1.onmessage = ( { data } ) => {
 		const { isAppBannerVisible } = data;
-		calypsoifyGutenberg.isAppBannerVisible = isAppBannerVisible;
+		dispatch( 'automattic/wpcom-welcome-guide' ).setWelcomeGuideEnabled( ! isAppBannerVisible );
 	};
 }
 
