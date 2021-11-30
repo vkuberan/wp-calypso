@@ -90,7 +90,7 @@ export function MiniCart( {
 				<MiniCartFooter className="mini-cart__footer">
 					<Button
 						className="mini-cart__checkout"
-						buttonType={ 'primary' }
+						buttonType="primary"
 						fullWidth
 						disabled={ isDisabled }
 						isBusy={ isDisabled }
