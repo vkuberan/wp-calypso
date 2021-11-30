@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { sprintf } from '@wordpress/i18n';
 import { useI18n } from '@wordpress/react-i18n';
 import { MiniCartLineItems } from './mini-cart-line-items';
+import type { PaymentMethod } from '@automattic/composite-checkout';
 import type { ResponseCart } from '@automattic/shopping-cart';
 
 const MiniCartWrapper = styled.div`
@@ -49,6 +50,13 @@ function MiniCartTotal( { responseCart }: { responseCart: ResponseCart } ) {
 	);
 }
 
+// The CheckoutProvider normally is used to provide a payment flow, but in this
+// case we just want its UI features so we set its payment methods to an empty
+// array. This could be improved in the future by using just the required
+// features of the provider.
+const emptyPaymentMethods: PaymentMethod[] = [];
+const emptyPaymentProcessors = {};
+
 export function MiniCart( {
 	selectedSiteSlug,
 	goToCheckout,
@@ -68,7 +76,10 @@ export function MiniCart( {
 	const isPwpoUser = false;
 
 	return (
-		<CheckoutProvider paymentMethods={ [] } paymentProcessors={ {} }>
+		<CheckoutProvider
+			paymentMethods={ emptyPaymentMethods }
+			paymentProcessors={ emptyPaymentProcessors }
+		>
 			<MiniCartWrapper className="mini-cart">
 				<MiniCartHeader className="mini-cart__header">
 					<MiniCartTitle className="mini-cart__title">{ __( 'Cart' ) }</MiniCartTitle>
