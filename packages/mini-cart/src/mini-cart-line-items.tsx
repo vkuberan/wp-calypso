@@ -32,13 +32,11 @@ export function MiniCartLineItems( {
 	removeCoupon,
 	createUserAndSiteBeforeTransaction,
 	responseCart,
-	isPwpoUser,
 }: {
 	removeProductFromCart: RemoveProductFromCart;
 	removeCoupon: RemoveCouponFromCart;
 	createUserAndSiteBeforeTransaction?: boolean;
 	responseCart: ResponseCart;
-	isPwpoUser: boolean;
 } ): JSX.Element {
 	const creditsLineItem = getCreditsLineItemFromCart( responseCart );
 	const couponLineItem = getCouponLineItemFromCart( responseCart );
@@ -54,7 +52,6 @@ export function MiniCartLineItems( {
 							removeProductFromCart={ removeProductFromCart }
 							createUserAndSiteBeforeTransaction={ createUserAndSiteBeforeTransaction }
 							responseCart={ responseCart }
-							isPwpoUser={ isPwpoUser }
 						/>
 					</MiniCartLineItemWrapper>
 				);
@@ -65,12 +62,11 @@ export function MiniCartLineItems( {
 						lineItem={ couponLineItem }
 						removeProductFromCart={ removeCoupon }
 						createUserAndSiteBeforeTransaction={ createUserAndSiteBeforeTransaction }
-						isPwpoUser={ isPwpoUser }
 					/>
 				</MiniCartLineItemWrapper>
 			) }
 			{ creditsLineItem && responseCart.sub_total_integer > 0 && (
-				<NonProductLineItem subtotal lineItem={ creditsLineItem } isPwpoUser={ isPwpoUser } />
+				<NonProductLineItem subtotal lineItem={ creditsLineItem } />
 			) }
 		</MiniCartLineItemsWrapper>
 	);

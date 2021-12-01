@@ -73,7 +73,6 @@ export function MiniCart( {
 	} = useShoppingCart( selectedSiteSlug );
 	const { __ } = useI18n();
 	const isDisabled = isLoading || isPendingUpdate;
-	const isPwpoUser = false;
 
 	return (
 		<CheckoutProvider
@@ -95,7 +94,6 @@ export function MiniCart( {
 					removeCoupon={ removeCoupon }
 					removeProductFromCart={ removeProductFromCart }
 					responseCart={ responseCart }
-					isPwpoUser={ isPwpoUser }
 				/>
 				<MiniCartTotal responseCart={ responseCart } />
 				<MiniCartFooter className="mini-cart__footer">
