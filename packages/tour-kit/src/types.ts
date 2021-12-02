@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Modifier } from 'react-popper';
 
 export type Step = {
@@ -56,7 +57,7 @@ export interface Config {
 			onPreviousStep?: Callback;
 		};
 		effects?: {
-			__experimental__spotlight?: boolean;
+			spotlight?: { styles?: React.CSSProperties };
 			arrowIndicator?: boolean; // defaults to true
 			overlay?: boolean;
 		};
