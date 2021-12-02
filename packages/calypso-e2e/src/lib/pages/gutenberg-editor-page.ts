@@ -106,7 +106,7 @@ export class GutenbergEditorPage {
 		const frame = await this.getEditorFrame();
 		const locator = frame.locator( selectors.welcomeTourCloseButton );
 
-		await locator.click( { timeout: 5 * 1000, force: true } );
+		await locator.click( { timeout: 10 * 1000 } );
 	}
 
 	/**
