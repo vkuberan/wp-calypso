@@ -80,7 +80,12 @@ export class GutenbergEditorPage {
 		// `nux?_envelope=1` request has been completed.
 		// On the other hand, `page.on` is able to monitor every request, including the
 		// one to the `nux` endpoint.
-		this.page.on( 'response', async ( response ) => {
+		this.page.on( 'requestfinished', async ( request ) => {
+			const response = await request.response();
+			if ( ! response ) {
+				return;
+			}
+
 			if ( ! response.url().includes( 'nux?_envelope=1' ) ) {
 				return;
 			}
