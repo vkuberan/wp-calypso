@@ -74,7 +74,7 @@ export class LoginPage {
 	 *
 	 * @param {string} path The path to be appended to /log-in. E.g. /log-in/new is the reskinned login page.
 	 */
-	async visit( path = '' ): Promise< void > {
+	 async visit( path: { path?: string } = {} ): Promise< void > {
 		const targetUrl = path ? `log-in/${ path }` : 'log-in';
 		await this.page.goto( getCalypsoURL( targetUrl ), { waitUntil: 'networkidle' } );
 	}
