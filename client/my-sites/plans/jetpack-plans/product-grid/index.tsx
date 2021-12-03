@@ -8,13 +8,14 @@ import {
 } from '@automattic/calypso-products';
 import classNames from 'classnames';
 import { useTranslate } from 'i18n-calypso';
-import { useMemo, useRef, useState, useEffect } from 'react';
+import { useMemo, useRef, useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import StoreFooter from 'calypso/jetpack-connect/store-footer';
 import isJetpackCloud from 'calypso/lib/jetpack/is-jetpack-cloud';
 import { getCurrentUserCurrencyCode } from 'calypso/state/currency-code/selectors';
 import getSitePlan from 'calypso/state/sites/selectors/get-site-plan';
 import getSelectedSiteId from 'calypso/state/ui/selectors/get-selected-site-id';
+import CategoryFilter from '../category-filter';
 import { FootnotesList } from '../footnotes-list';
 import { getForCurrentCROIteration, Iterations } from '../iterations';
 import JetpackCrmFreeCard from '../jetpack-crm-free-card';
@@ -28,7 +29,11 @@ import useGetPlansGridProducts from '../use-get-plans-grid-products';
 import ProductGridSection from './section';
 import { getPlansToDisplay, getProductsToDisplay, isConnectionFlow } from './utils';
 import type { ProductsGridProps, SelectorProduct } from '../types';
-import type { JetpackProductSlug, JetpackPlanSlug } from '@automattic/calypso-products';
+import type {
+	JetpackProductSlug,
+	JetpackPlanSlug,
+	JetpackProductCategory,
+} from '@automattic/calypso-products';
 import type { AppState } from 'calypso/types';
 
 import './style.scss';
@@ -97,6 +102,9 @@ const ProductGrid: React.FC< ProductsGridProps > = ( {
 } ) => {
 	const translate = useTranslate();
 
+	const [ category, setCategory ] = useState< JetpackProductCategory >();
+	const onCategoryChange = useCallback( setCategory, [ setCategory ] );
+
 	const siteId = useSelector( getSelectedSiteId );
 	const currencyCode = useSelector( getCurrentUserCurrencyCode );
 	const currentPlan = useSelector( ( state ) => getSitePlan( state, siteId ) );
@@ -138,6 +146,9 @@ const ProductGrid: React.FC< ProductsGridProps > = ( {
 
 		return [ allItems.slice( 0, 3 ), allItems.slice( 3 ) ];
 	}, [ duration, availableProducts, purchasedProducts, includedInPlanProducts, currentPlanSlug ] );
+	const filteredItems = category
+		? otherItems.filter( ( { categories } ) => categories?.includes( category ) )
+		: otherItems;
 
 	const showFreeCard = useSelector( getShowFreeCard );
 
@@ -244,19 +255,22 @@ const ProductGrid: React.FC< ProductsGridProps > = ( {
 			<ProductGridSection title={ translate( 'More Products' ) }>
 				{ getForCurrentCROIteration( {
 					[ Iterations.ONLY_REALTIME_PRODUCTS ]: (
-						<ul className="product-grid__product-grid">
-							{ otherItems.map( getOtherItemsProductCard ) }
-
-							<li>
-								<JetpackCrmFreeCard siteId={ siteId } duration={ duration } />
-							</li>
-
-							{ showFreeCard && (
+						<>
+							<div className="product-grid__category-filter">
+								<CategoryFilter onChange={ onCategoryChange } />
+							</div>
+							<ul className="product-grid__product-grid">
+								{ filteredItems.map( getOtherItemsProductCard ) }
 								<li>
-									<JetpackFreeCard siteId={ siteId } urlQueryArgs={ urlQueryArgs } />
+									<JetpackCrmFreeCard siteId={ siteId } duration={ duration } />
 								</li>
-							) }
-						</ul>
+								{ showFreeCard && (
+									<li>
+										<JetpackFreeCard siteId={ siteId } urlQueryArgs={ urlQueryArgs } />
+									</li>
+								) }
+							</ul>
+						</>
 					),
 				} ) ?? (
 					<>

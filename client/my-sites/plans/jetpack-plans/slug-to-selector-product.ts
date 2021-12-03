@@ -108,6 +108,7 @@ function itemToSelectorProduct(
 			buttonLabel: getJetpackProductCallToAction( item ),
 			monthlyProductSlug,
 			term: item.term,
+			categories: item.categories,
 			hidePrice: JETPACK_SEARCH_PRODUCTS.includes( item.product_slug ),
 			features: {
 				items:
