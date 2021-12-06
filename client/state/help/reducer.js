@@ -5,7 +5,6 @@ import {
 	SUPPORT_LEVEL_SET,
 } from 'calypso/state/action-types';
 import { combineReducers } from 'calypso/state/utils';
-import courses from './courses/reducer';
 import directly from './directly/reducer';
 import ticket from './ticket/reducer';
 
@@ -62,7 +61,6 @@ export const supportLevel = ( state = null, { type, level } ) => {
 };
 
 const combinedReducer = combineReducers( {
-	courses,
 	directly,
 	ticket,
 	selectedSiteId,
