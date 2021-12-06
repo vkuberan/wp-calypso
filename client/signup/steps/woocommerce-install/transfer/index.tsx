@@ -42,8 +42,11 @@ export default function Transfer( props: WooCommerceInstallProps ): ReactElement
 			return;
 		}
 
-		dispatch( fetchAutomatedTransferStatus( siteId ) );
-		dispatch( initiateThemeTransfer( siteId, null, 'woocommerce' ) );
+		if ( isAtomic ) {
+		} else {
+			dispatch( fetchAutomatedTransferStatus( siteId ) );
+			dispatch( initiateThemeTransfer( siteId, null, 'woocommerce' ) );
+		}
 	}, [ siteId, dispatch ] );
 
 	// Watch transfer status
