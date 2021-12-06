@@ -1,7 +1,6 @@
 import { useI18n } from '@wordpress/react-i18n';
 import { ReactElement, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import StepWrapper from 'calypso/signup/step-wrapper';
 import { fetchAutomatedTransferStatus } from 'calypso/state/automated-transfer/actions';
 import { transferStates } from 'calypso/state/automated-transfer/constants';
 import {
@@ -12,15 +11,13 @@ import { getSiteWooCommerceUrl } from 'calypso/state/sites/selectors';
 import { initiateThemeTransfer } from 'calypso/state/themes/actions';
 import { hasUploadFailed } from 'calypso/state/themes/upload-theme/selectors';
 import { getSelectedSiteId } from 'calypso/state/ui/selectors';
-import useWooCommerceOnPlansEligibility from '../hooks/use-woop-handling';
 import Error from './error';
 import Progress from './progress';
-import type { WooCommerceInstallProps } from '../';
+import type { GoToStep } from '../../../types';
 
 import './style.scss';
 
-export default function Transfer( props: WooCommerceInstallProps ): ReactElement | null {
-	const { goToStep, isReskinned } = props;
+export default function Transfer( { goToStep }: { goToStep: GoToStep } ): ReactElement | null {
 	const { __ } = useI18n();
 	const dispatch = useDispatch();
 
@@ -40,8 +37,6 @@ export default function Transfer( props: WooCommerceInstallProps ): ReactElement
 
 	const wcAdmin = useSelector( ( state ) => getSiteWooCommerceUrl( state, siteId ) ) ?? '/';
 
-	const { isAtomicSite } = useWooCommerceOnPlansEligibility( siteId );
-
 	// Initiate Atomic transfer
 	useEffect( () => {
 		if ( ! siteId ) {
@@ -49,13 +44,8 @@ export default function Transfer( props: WooCommerceInstallProps ): ReactElement
 		}
 
 		dispatch( fetchAutomatedTransferStatus( siteId ) );
-
-		if ( isAtomicSite ) {
-			// dispatch( initiateSoftwareInstall( siteId, {'software-set': 'woo-on-plans'} ) );
-		} else {
-			dispatch( initiateThemeTransfer( siteId, null, 'woocommerce' ) );
-		}
-	}, [ dispatch, siteId, isAtomicSite ] );
+		dispatch( initiateThemeTransfer( siteId, null, 'woocommerce' ) );
+	}, [ dispatch, siteId ] );
 
 	// Watch transfer status
 	useEffect( () => {
@@ -101,48 +91,30 @@ export default function Transfer( props: WooCommerceInstallProps ): ReactElement
 			transferStatus === transferStates.REQUEST_FAILURE ||
 			transferStatus === transferStates.CONFLICTS
 		) {
-			setProgress( 0 );
+			setProgress( 1 );
 			setError( { transferFailed, transferStatus } );
 		}
 	}, [ siteId, goToStep, fetchingTransferStatus, transferStatus, transferFailed, wcAdmin, __ ] );
 
-	// useEffect( () => {
-	// 	if ( simulatedProgress < 1 ) {
-	// 		return;
-	// 	}
+	useEffect( () => {
+		if ( progress === 1 ) {
+			const timer = setTimeout( () => {
+				window.location.href = wcAdmin;
+			}, 3000 );
 
-	// 	const timer = setTimeout( () => {
-	// 		window.location.href = wcAdmin;
-	// 	}, 5000 );
-
-	// 	return function () {
-	// 		if ( ! timer ) {
-	// 			return;
-	// 		}
-	// 		window.clearTimeout( timer );
-	// 	};
-	// }, [ simulatedProgress, wcAdmin ] );
+			return function () {
+				if ( ! timer ) {
+					return;
+				}
+				window.clearTimeout( timer );
+			};
+		}
+	}, [ progress, wcAdmin ] );
 
 	return (
-		<StepWrapper
-			flowName="woocommerce-install"
-			hideSkip={ true }
-			nextLabelText={ __( 'Confirm' ) }
-			allowBackFirstStep={ true }
-			backUrl="/woocommerce-installation"
-			hideFormattedHeader={ true }
-			className="transfer__step-wrapper"
-			isWideLayout={ isReskinned }
-			stepContent={
-				<>
-					{ isAtomic && <Install siteId={ siteId } /> }
-					{ !isAtomic && <Transfer siteId={siteId } />
-
-					{ error.transferFailed && <Error message={ error.transferStatus } /> }
-					{ ! error.transferFailed && <Progress progress={ progress } /> }
-				</>
-			}
-			{ ...props }
-		/>
+		<>
+			{ error.transferFailed && <Error message={ error.transferStatus || '' } /> }
+			{ ! error.transferFailed && <Progress progress={ progress } /> }
+		</>
 	);
 }

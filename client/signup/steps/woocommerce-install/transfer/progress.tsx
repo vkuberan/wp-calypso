@@ -1,8 +1,6 @@
-import { Title } from '@automattic/onboarding';
 import { useI18n } from '@wordpress/react-i18n';
 import { ReactElement, useState, useEffect } from 'react';
-
-import './style.scss';
+import StepContent from './step-content';
 
 export default function Progress( { progress }: { progress: number } ): ReactElement {
 	const { __ } = useI18n();
@@ -38,18 +36,11 @@ export default function Progress( { progress }: { progress: number } ): ReactEle
 	}, [ simulatedProgress, progress, __ ] );
 
 	return (
-		<>
-			<div className="transfer__heading-wrapper woocommerce-install__heading-wrapper">
-				<div className="transfer__heading woocommerce-install__heading">
-					<Title>{ step }</Title>
-				</div>
-			</div>
-			<div className="transfer__content woocommerce-install__content">
-				<div
-					className="transfer__progress-bar"
-					style={ { '--progress': progress } as React.CSSProperties }
-				/>
-			</div>
-		</>
+		<StepContent title={ step }>
+			<div
+				className="transfer__progress-bar"
+				style={ { '--progress': progress } as React.CSSProperties }
+			/>
+		</StepContent>
 	);
 }
