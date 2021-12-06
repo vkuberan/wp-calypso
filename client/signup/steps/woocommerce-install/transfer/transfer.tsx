@@ -135,9 +135,10 @@ export default function Transfer( props: WooCommerceInstallProps ): ReactElement
 			isWideLayout={ isReskinned }
 			stepContent={
 				<>
-					{ /* { isAtomic && <Install siteId={ siteId } /> }
-					{ !isAtomic && <Transfer siteId={siteId } /> */ }
-					{ error.transferFailed && <Error message={ error.transferStatus || '' } /> }
+					{ isAtomic && <Install siteId={ siteId } /> }
+					{ !isAtomic && <Transfer siteId={siteId } />
+
+					{ error.transferFailed && <Error message={ error.transferStatus } /> }
 					{ ! error.transferFailed && <Progress progress={ progress } /> }
 				</>
 			}
