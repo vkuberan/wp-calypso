@@ -15,8 +15,8 @@ import {
  * @returns {object} An action object.
  */
 export const initiateAtomicTransferWithPluginInstall = (
-	softwareSet: string,
-	siteId: string
+	siteId: number,
+	softwareSet: string
 ) => ( {
 	type: ATOMIC_PLUGIN_INSTALL_INITIATE_WITH_TRANSFER,
 	siteId,
@@ -31,7 +31,7 @@ export const initiateAtomicTransferWithPluginInstall = (
  * @param {string} siteId Site ID.
  * @returns {object} An action object.
  */
-export const initiateAtomicPluginInstall = ( softwareSet: string, siteId: string ) => ( {
+export const initiateAtomicPluginInstall = ( siteId: number, softwareSet: string ) => ( {
 	type: ATOMIC_PLUGIN_INSTALL_INITIATE,
 	siteId,
 	softwareSet,
@@ -43,7 +43,7 @@ export const initiateAtomicPluginInstall = ( softwareSet: string, siteId: string
  * @param {string} siteId Site ID.
  * @returns {object} An action object.
  */
-export const requestAtomicTransferStatus = ( siteId: string ) => ( {
+export const requestAtomicTransferStatus = ( siteId: number ) => ( {
 	type: ATOMIC_PLUGIN_INSTALL_REQUEST_TRANSFER_STATUS,
 	siteId,
 } );
@@ -55,7 +55,7 @@ export const requestAtomicTransferStatus = ( siteId: string ) => ( {
  * @param {string} siteId Site ID.
  * @returns {object} An action object.
  */
-export const requestAtomicInstallStatus = ( softwareSet: string, siteId: string ) => ( {
+export const requestAtomicInstallStatus = ( siteId: number, softwareSet: string ) => ( {
 	type: ATOMIC_PLUGIN_INSTALL_REQUEST_STATUS,
 	siteId,
 	softwareSet,
@@ -70,14 +70,14 @@ export const requestAtomicInstallStatus = ( softwareSet: string, siteId: string 
  * @returns {object} An action object
  */
 export const setAtomicTransferStatus = (
-	siteId: string,
-	status: string,
-	softwareSet: string
+	siteId: number,
+	softwareSet: string,
+	status: string
 ) => ( {
 	type: ATOMIC_PLUGIN_INSTALL_SET_TRANSFER_STATUS,
 	siteId,
-	status,
 	softwareSet,
+	status,
 } );
 
 /**
@@ -88,9 +88,9 @@ export const setAtomicTransferStatus = (
  * @param {string} softwareSet The software set slug.
  * @returns {object} An action object
  */
-export const setAtomicInstallStatus = ( siteId: string, status: string, softwareSet: string ) => ( {
+export const setAtomicInstallStatus = ( siteId: number, softwareSet: string, status: string ) => ( {
 	type: ATOMIC_PLUGIN_INSTALL_SET_STATUS,
 	siteId,
-	status,
 	softwareSet,
+	status,
 } );

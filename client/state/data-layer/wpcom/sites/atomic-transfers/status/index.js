@@ -1,4 +1,5 @@
 import { ATOMIC_PLUGIN_INSTALL_REQUEST_TRANSFER_STATUS } from 'calypso/state/action-types';
+import { setAtomicTransferStatus } from 'calypso/state/atomic-transfer-with-plugin/actions';
 import { registerHandlers } from 'calypso/state/data-layer/handler-registry';
 import { http } from 'calypso/state/data-layer/wpcom-http/actions';
 import { dispatchRequest } from 'calypso/state/data-layer/wpcom-http/utils';
@@ -13,12 +14,12 @@ const requestTransferToAtomicStatus = ( action ) =>
 		action
 	);
 
-export const receiveError = ( error ) => {
-	return error;
+export const receiveError = ( action, { error } ) => {
+	setAtomicTransferStatus( action.siteId, action.softwareSet, error );
 };
 
 export const receiveResponse = ( action, { success } ) => {
-	return success;
+	setAtomicTransferStatus( action.siteId, action.softwareSet, success.applied );
 };
 
 registerHandlers( 'state/data-layer/wpcom/sites/atomic-transfers/status', {
