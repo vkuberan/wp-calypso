@@ -1,14 +1,17 @@
 import { useI18n } from '@wordpress/react-i18n';
 import { ReactElement, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAutomatedTransferStatus } from 'calypso/state/automated-transfer/actions';
+import {
+	requestAtomicInstallStatus,
+	initiateAtomicTransferWithPluginInstall,
+} from 'calypso/state/atomic-transfer-with-plugin/actions';
+// import { getPluginInstallStatus } from 'calypso/state/atomic-transfer-with-plugin/selectors';
 import { transferStates } from 'calypso/state/automated-transfer/constants';
 import {
 	isFetchingAutomatedTransferStatus,
 	getAutomatedTransferStatus,
 } from 'calypso/state/automated-transfer/selectors';
 import { getSiteWooCommerceUrl } from 'calypso/state/sites/selectors';
-import { initiateThemeTransfer } from 'calypso/state/themes/actions';
 import { hasUploadFailed } from 'calypso/state/themes/upload-theme/selectors';
 import { getSelectedSiteId } from 'calypso/state/ui/selectors';
 import Error from './error';
@@ -43,8 +46,8 @@ export default function Transfer( { goToStep }: { goToStep: GoToStep } ): ReactE
 			return;
 		}
 
-		dispatch( fetchAutomatedTransferStatus( siteId ) );
-		dispatch( initiateThemeTransfer( siteId, null, 'woocommerce' ) );
+		dispatch( requestAtomicInstallStatus( siteId, 'woo-on-plans' ) );
+		dispatch( initiateAtomicTransferWithPluginInstall( siteId, 'woo-on-plans' ) );
 	}, [ dispatch, siteId ] );
 
 	// Watch transfer status

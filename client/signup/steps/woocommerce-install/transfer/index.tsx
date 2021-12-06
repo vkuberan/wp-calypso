@@ -16,9 +16,8 @@ export default function Transfer( props: WooCommerceInstallProps ): ReactElement
 
 	// selectedSiteId is set by the controller whenever site is provided as a query param.
 	const siteId = useSelector( getSelectedSiteId ) as number;
-	const isAtomic = useSelector( ( state ) => isAtomicSite( state, siteId ) );
 
-	console.log( { isAtomic } );
+	const isAtomic = useSelector( ( state ) => isAtomicSite( state, siteId ) );
 
 	return (
 		<StepWrapper
