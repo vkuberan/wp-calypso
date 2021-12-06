@@ -58,6 +58,8 @@ export default function Transfer( { goToStep }: { goToStep: GoToStep } ): ReactE
 			return;
 		}
 
+		let timer: NodeJS.Timeout;
+
 		// Note: most of these states are never seen and the ones you do see will
 		// sometimes be missed from transfer to transfer due to polling request timing.
 		switch ( transferStatus ) {
@@ -81,7 +83,16 @@ export default function Transfer( { goToStep }: { goToStep: GoToStep } ): ReactE
 				break;
 			case transferStates.COMPLETE:
 				setProgress( 1 );
-				break;
+				timer = setTimeout( () => {
+					window.location.href = wcAdmin;
+				}, 3000 );
+
+				return function () {
+					if ( ! timer ) {
+						return;
+					}
+					window.clearTimeout( timer );
+				};
 		}
 
 		if (
@@ -95,21 +106,6 @@ export default function Transfer( { goToStep }: { goToStep: GoToStep } ): ReactE
 			setError( { transferFailed, transferStatus } );
 		}
 	}, [ siteId, goToStep, fetchingTransferStatus, transferStatus, transferFailed, wcAdmin, __ ] );
-
-	useEffect( () => {
-		if ( progress === 1 ) {
-			const timer = setTimeout( () => {
-				window.location.href = wcAdmin;
-			}, 3000 );
-
-			return function () {
-				if ( ! timer ) {
-					return;
-				}
-				window.clearTimeout( timer );
-			};
-		}
-	}, [ progress, wcAdmin ] );
 
 	return (
 		<>
