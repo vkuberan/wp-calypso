@@ -253,20 +253,6 @@ Undocumented.prototype.getSiteConnectInfo = function ( inputUrl ) {
 };
 
 /**
- * Fetch the status of an Automated Transfer.
- *
- * @param {number} siteId -- the ID of the site being transferred
- * @param {number} transferId -- ID of the specific transfer
- * @returns {Promise} promise for handling result
- */
-Undocumented.prototype.transferStatus = function ( siteId, transferId ) {
-	debug( '/sites/:site_id/automated-transfers/status/:transfer_id' );
-	return this.wpcom.req.get( {
-		path: `/sites/${ siteId }/automated-transfers/status/${ transferId }`,
-	} );
-};
-
-/**
  * Get OAuth2 Client data for a given client ID
  *
  * @param {string}     clientId       The client ID
