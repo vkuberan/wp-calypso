@@ -17,7 +17,7 @@ import {
 import { savePreference } from 'calypso/state/preferences/actions';
 import { getPreference } from 'calypso/state/preferences/selectors';
 import getCurrentRoute from 'calypso/state/selectors/get-current-route';
-import isAppBannerVisible from 'calypso/state/selectors/is-app-banner-visible';
+import shouldDisplayAppBanner from 'calypso/state/selectors/should-display-app-banner';
 import isNotificationsOpen from 'calypso/state/selectors/is-notifications-open';
 import { shouldDisplayTosUpdateBanner } from 'calypso/state/selectors/should-display-tos-update-banner';
 import { dismissAppBanner } from 'calypso/state/ui/actions';
@@ -129,13 +129,15 @@ export class AppBanner extends Component {
 	}
 
 	isDraftPostModalShowing() {
-		return window.sessionStorage.getItem( 'wpcom_signup_complete_show_draft_post_modal' );
+		return typeof window !== 'undefined'
+			? window.sessionStorage.getItem( 'wpcom_signup_complete_show_draft_post_modal' )
+			: false;
 	}
 
 	render() {
 		const { translate, currentSection } = this.props;
 
-		if ( ! this.props.isVisible ) {
+		if ( ! this.props.shouldDisplayAppBanner ) {
 			return null;
 		}
 
@@ -227,7 +229,7 @@ const mapStateToProps = ( state ) => {
 		currentSection: getCurrentSection( sectionName, isNotesOpen ),
 		currentRoute: getCurrentRoute( state ),
 		isTosBannerVisible: shouldDisplayTosUpdateBanner( state ),
-		isVisible: isAppBannerVisible( state ),
+		shouldDisplayAppBanner: shouldDisplayAppBanner( state ),
 	};
 };
 
