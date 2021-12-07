@@ -39,6 +39,7 @@
 		"react-popper": "^2.2.5"
 	},
 	"devDependencies": {
+		"@automattic/calypso-build": "workspace:^",
 		"@automattic/calypso-typescript-config": "workspace:^",
 		"@storybook/preset-scss": "^1.0.3",
 		"css-loader": "^3.6.0",

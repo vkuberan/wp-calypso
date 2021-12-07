@@ -89,6 +89,11 @@ __metadata:
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/load-script": "workspace:^"
+    "@types/cookie": ^0.4.1
+    "@types/debug": ^4.1.7
+    "@types/lodash": ^4.14.177
+    "@types/node": ^16.11.10
+    "@types/uuid": ^8.3.3
     cookie: ^0.4.0
     debug: ^4.1.1
     hash.js: ^1.1.7
@@ -207,6 +212,8 @@ __metadata:
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/create-calypso-config": "workspace:^"
+    "@types/cookie": ^0.4.1
+    "@types/node": ^16.11.10
     cookie: ^0.4.0
     tslib: ^2.3.0
     typescript: ^4.4.4
@@ -289,9 +296,12 @@ __metadata:
     "@automattic/calypso-typescript-config": "workspace:^"
     "@stripe/react-stripe-js": ^1.4.1
     "@stripe/stripe-js": ^1.17.1
+    "@types/debug": ^4.1.7
+    "@types/react": ^17.0.36
     debug: ^4.1.1
     react: ^17.0.2
     react-dom: ^17.0.2
+    tslib: ^2.3.0
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
@@ -307,6 +317,7 @@ __metadata:
   resolution: "@automattic/calypso-url@workspace:packages/calypso-url"
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
+    tslib: ^2.3.0
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
@@ -322,10 +333,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/components@workspace:packages/components"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-color-schemes": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@storybook/addon-actions": ^6.3.12
     "@storybook/preset-scss": ^1.0.3
+    "@types/react-modal": ^3.13.1
     "@wordpress/base-styles": ^4.0.4
     classnames: ^2.3.1
     css-loader: ^3.6.0
@@ -358,6 +371,7 @@ __metadata:
     "@storybook/preset-scss": ^1.0.3
     "@testing-library/jest-dom": ^5.15.1
     "@testing-library/react": ^12.1.2
+    "@types/debug": ^4.1.7
     "@wordpress/i18n": ^4.2.4
     "@wordpress/react-i18n": ^3.0.4
     css-loader: ^3.6.0
@@ -383,6 +397,7 @@ __metadata:
   resolution: "@automattic/create-calypso-config@workspace:packages/create-calypso-config"
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
+    "@types/node": ^16.11.10
     cookie: ^0.4.0
     tslib: ^2.3.0
     typescript: ^4.4.4
@@ -393,9 +408,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/data-stores@workspace:packages/data-stores"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/format-currency": "workspace:^"
+    "@types/qs": ^6.9.7
     "@types/validator": ^13.7.0
+    "@types/wordpress__data": ^4.6.10
+    "@types/wordpress__data-controls": ^2.2.0
     "@wordpress/api-fetch": ^5.2.6
     "@wordpress/data-controls": ^2.2.7
     "@wordpress/deprecated": ^3.2.3
@@ -430,6 +449,9 @@ __metadata:
     "@automattic/typography": "workspace:^"
     "@testing-library/jest-dom": ^5.15.1
     "@testing-library/react": ^12.1.2
+    "@types/debug": ^4.1.7
+    "@types/react-router-dom": ^5.3.2
+    "@types/wordpress__components": ^14.0.4
     "@wordpress/components": ^19.1.1
     "@wordpress/react-i18n": ^3.0.4
     "@wordpress/url": ^3.3.1
@@ -447,6 +469,7 @@ __metadata:
     utility-types: ^3.10.0
     webpack: ^5.64.4
   peerDependencies:
+    "@types/debug": ^4.1.7
     "@wordpress/data": ^6.1.4
     "@wordpress/element": ^4.0.4
     "@wordpress/i18n": ^4.2.4
@@ -463,6 +486,7 @@ __metadata:
   resolution: "@automattic/domain-picker@workspace:packages/domain-picker"
   dependencies:
     "@automattic/calypso-analytics": "workspace:^"
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-color-schemes": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/data-stores": "workspace:^"
@@ -471,6 +495,7 @@ __metadata:
     "@automattic/typography": "workspace:^"
     "@testing-library/jest-dom": ^5.15.1
     "@testing-library/react": ^12.1.2
+    "@types/wordpress__components": ^14.0.4
     "@wordpress/base-styles": ^4.0.4
     "@wordpress/components": ^19.1.1
     "@wordpress/compose": ^5.0.6
@@ -530,6 +555,7 @@ __metadata:
   dependencies:
     "@automattic/calypso-polyfills": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
+    "@types/node": ^16.11.10
     tslib: ^2.3.0
     typescript: ^4.4.4
   languageName: unknown
@@ -539,6 +565,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/format-currency@workspace:packages/format-currency"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     i18n-calypso: "workspace:^"
   peerDependencies:
@@ -569,6 +596,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/interpolate-components@workspace:packages/interpolate-components"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     react-dom: ^17.0.2
   peerDependencies:
@@ -655,6 +683,7 @@ __metadata:
   resolution: "@automattic/js-utils@workspace:packages/js-utils"
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
+    tslib: ^2.3.0
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
@@ -667,6 +696,7 @@ __metadata:
     "@automattic/languages": "workspace:^"
     "@automattic/search": "workspace:^"
     "@babel/runtime": ^7.16.3
+    "@types/wordpress__components": ^14.0.4
     "@wordpress/base-styles": ^4.0.4
     "@wordpress/components": ^19.1.1
     "@wordpress/i18n": ^4.2.4
@@ -715,6 +745,7 @@ __metadata:
   resolution: "@automattic/launch@workspace:packages/launch"
   dependencies:
     "@automattic/calypso-analytics": "workspace:^"
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/data-stores": "workspace:^"
     "@automattic/domain-picker": "workspace:^"
@@ -750,6 +781,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/load-script@workspace:packages/load-script"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@babel/runtime": ^7.16.3
     debug: ^4.0.0
@@ -771,6 +803,7 @@ __metadata:
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
     "@types/mocha": ^9.0.0
+    "@types/node": ^16.11.10
     typescript: ^4.4.4
   peerDependencies:
     mocha: ">=8.0.0"
@@ -883,10 +916,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/onboarding@workspace:packages/onboarding"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/data-stores": "workspace:^"
     "@automattic/typography": "workspace:^"
     "@testing-library/react": ^12.1.2
+    "@types/react-router-dom": ^5.3.2
+    "@types/wordpress__components": ^14.0.4
     "@wordpress/base-styles": ^4.0.4
     "@wordpress/components": ^19.1.1
     "@wordpress/data": ^6.1.4
@@ -912,10 +948,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/page-pattern-modal@workspace:packages/page-pattern-modal"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/design-picker": "workspace:^"
     "@automattic/typography": "workspace:^"
     "@testing-library/react": ^12.1.2
+    "@types/wordpress__blocks": ^6.4.12
     "@wordpress/blocks": ^11.1.4
     "@wordpress/components": ^19.1.1
     "@wordpress/compose": ^5.0.6
@@ -941,11 +979,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/plans-grid@workspace:packages/plans-grid"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/data-stores": "workspace:^"
     "@automattic/i18n-utils": "workspace:^"
     "@automattic/onboarding": "workspace:^"
     "@automattic/typography": "workspace:^"
+    "@types/debug": ^4.1.7
     "@wordpress/base-styles": ^4.0.4
     "@wordpress/components": ^19.1.1
     "@wordpress/compose": ^5.0.6
@@ -974,6 +1014,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/popup-monitor@workspace:packages/popup-monitor"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     chai: ^4.3.4
     lodash: ^4.17.21
@@ -998,6 +1039,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/request-external-access@workspace:packages/request-external-access"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/popup-monitor": "workspace:^"
   languageName: unknown
@@ -1007,6 +1049,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/search@workspace:packages/search"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-color-schemes": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/typography": "workspace:^"
@@ -1018,6 +1061,7 @@ __metadata:
     "@testing-library/dom": ^8.11.1
     "@testing-library/react": ^12.1.2
     "@testing-library/user-event": ^13.5.0
+    "@types/wordpress__components": ^14.0.4
     "@wordpress/base-styles": ^4.0.4
     "@wordpress/components": ^19.1.1
     "@wordpress/compose": ^5.0.6
@@ -1050,7 +1094,10 @@ __metadata:
     "@automattic/calypso-typescript-config": "workspace:^"
     "@testing-library/jest-dom": ^5.15.1
     "@testing-library/react": ^12.1.2
+    "@types/debug": ^4.1.7
+    "@types/react": ^17.0.36
     debug: ^4.1.1
+    tslib: ^2.3.0
     typescript: ^4.4.4
   peerDependencies:
     react: ^17.0.2
@@ -1062,6 +1109,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/social-previews@workspace:packages/social-previews"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@wordpress/components": ^19.1.1
     "@wordpress/i18n": ^4.2.4
@@ -1085,6 +1133,8 @@ __metadata:
   resolution: "@automattic/state-utils@workspace:packages/state-utils"
   dependencies:
     "@automattic/calypso-typescript-config": "workspace:^"
+    "@types/lodash": ^4.14.177
+    "@types/node": ^16.11.10
     "@wordpress/is-shallow-equal": ^4.2.1
     "@wordpress/warning": ^2.2.2
     lodash: ^4.17.21
@@ -1115,6 +1165,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/tour-kit@workspace:packages/tour-kit"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/viewport-react": "workspace:^"
     "@popperjs/core": ^2.10.2
@@ -1155,6 +1206,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/viewport-react@workspace:packages/viewport-react"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/viewport": "workspace:^"
     "@wordpress/compose": ^5.0.6
@@ -1168,6 +1220,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/viewport@workspace:packages/viewport"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
   languageName: unknown
   linkType: soft
@@ -1227,6 +1280,7 @@ __metadata:
   resolution: "@automattic/whats-new@workspace:packages/whats-new"
   dependencies:
     "@automattic/calypso-analytics": "workspace:^"
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-color-schemes": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/i18n-utils": "workspace:^"
@@ -1318,6 +1372,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@automattic/wpcom-checkout@workspace:packages/wpcom-checkout"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-products": "workspace:^"
     "@automattic/calypso-stripe": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
@@ -1327,6 +1382,7 @@ __metadata:
     "@stripe/stripe-js": ^1.17.1
     "@testing-library/jest-dom": ^5.15.1
     "@testing-library/react": ^12.1.2
+    "@types/wordpress__data": ^4.6.10
     "@wordpress/data": ^6.1.4
     "@wordpress/i18n": ^4.2.4
     "@wordpress/react-i18n": ^3.0.4
@@ -6997,7 +7053,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/wordpress__blocks@npm:*":
+"@types/wordpress__blocks@npm:*, @types/wordpress__blocks@npm:^6.4.12":
   version: 6.4.12
   resolution: "@types/wordpress__blocks@npm:6.4.12"
   dependencies:
@@ -20233,6 +20289,7 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "i18n-calypso@workspace:packages/i18n-calypso"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@automattic/interpolate-components": "workspace:^"
     "@babel/runtime": ^7.16.3
@@ -28097,6 +28154,7 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "photon@workspace:packages/photon"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     crc32: ^0.2.2
     debug: ^4.0.0
@@ -38352,6 +38410,7 @@ testarmada-magellan@11.0.10:
   version: 0.0.0-use.local
   resolution: "wpcom-proxy-request@workspace:packages/wpcom-proxy-request"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-eslint-overrides": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     chai: ^4.3.4
@@ -38366,6 +38425,7 @@ testarmada-magellan@11.0.10:
   version: 0.0.0-use.local
   resolution: "wpcom-xhr-request@workspace:packages/wpcom-xhr-request"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@babel/runtime": ^7.16.3
     debug: ^4.1.1
@@ -38378,6 +38438,7 @@ testarmada-magellan@11.0.10:
   version: 0.0.0-use.local
   resolution: "wpcom@workspace:packages/wpcom.js"
   dependencies:
+    "@automattic/calypso-build": "workspace:^"
     "@automattic/calypso-eslint-overrides": "workspace:^"
     "@automattic/calypso-typescript-config": "workspace:^"
     "@babel/core": ^7.16.0
